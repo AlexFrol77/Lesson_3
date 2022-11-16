@@ -7,11 +7,36 @@ private:
 	double num1,
 		   num2;
 public:
-	Calculator(double& obj1, double& obj2) {
-			this->num1 = obj1;
-			this->num2 = obj2;
-	}
+	Calculator() {
 
+	}
+	
+	bool setNum1(double &obj) {
+		bool flag = true;
+		if (obj != 0) {
+			this->num1 = obj;
+			flag = true;
+			return flag;
+		}
+		else {
+			std::cout << "Неверный ввод!" << std::endl;
+			flag = false;
+			return flag;
+		}
+	}
+	bool setNum2(double &obj) {
+		bool flag = true;
+		if (obj != 0) {
+			this->num2 = obj;
+			flag = true;
+			return flag;
+		}
+		else {
+			std::cout << "Неверный ввод!" << std::endl;
+			flag = false;
+			return flag;
+		}
+	}
 	double add() {		
 		return num1 + num2;
 	}
@@ -40,35 +65,25 @@ int main(int argc, char** argv) {
 	double num1,
 		   num2;
 	bool flagRing = true;
-	bool flagTemp = true;
+	bool flagTemp;
+	
+	Calculator OneCalc;
+
 	while (flagRing) {
-		
-		while (flagTemp) {
+
+		flagTemp = false;
+		while (!flagTemp) {
 			std::cout << "Введите num1: ";
 			std::cin >> num1;
-			if (num1 == 0) {
-				std::cout << "Неверный ввод!" << std::endl;
-				flagTemp = true;
-			}
-			else {
-				flagTemp = false;
-			}
+			flagTemp = OneCalc.setNum1(num1);
 		}
-		flagTemp = true;
-		while (flagTemp) {
+
+		flagTemp = false;
+		while (!flagTemp) {
 			std::cout << "Введите num2: ";
 			std::cin >> num2;
-			if (num2 == 0) {
-				std::cout << "Неверный ввод!" << std::endl;
-				flagTemp = true;
-			}
-			else {
-				flagTemp = false;
-			}
+			flagTemp = OneCalc.setNum2(num2);
 		}
-		flagTemp = true;
-
-		Calculator OneCalc(num1, num2);
 
 		double result;
 		result = OneCalc.add();
