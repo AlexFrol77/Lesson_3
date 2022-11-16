@@ -4,13 +4,10 @@
 
 class Counter {
 private:
-	int count = 1;
+	int count;
 public:
 	Counter() {
-	
-	}
-	Counter (int& countStart) {
-		this->count = countStart;
+		this->count = 1;
 	}
 	void countSet (int& obj) {
 		this->count = obj;
